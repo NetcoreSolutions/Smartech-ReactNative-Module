@@ -1,0 +1,46 @@
+{
+  "name": "smartech-reactnative-module",
+  "title": "Smartech React Native Module",
+  "version": "1.0.0",
+  "description": "Smartech SDK's React Native Plugin For React Native Projects",
+  "main": "index.js",
+  "files": [
+    "README.md",
+    "android",
+    "index.js",
+    "ios",
+    "smartech-reactnative-module.podspec"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NetcoreSolutions/Smartech-ReactNative-Module.git",
+    "baseUrl": "https://github.com/NetcoreSolutions/Smartech-ReactNative-Module"
+  },
+  "keywords": [
+    "smartech",
+    "netcore",
+    "push",
+    "notification",
+    "push notification",
+    "apns",
+    "fcm",
+    "messaging",
+    "ios",
+    "android"
+  ],
+  "author": "Netcore Solutions",
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
+  }
+}
