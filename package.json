@@ -1,7 +1,7 @@
 {
   "name": "smartech-reactnative-module",
   "title": "Smartech React Native Module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Smartech SDK's React Native Plugin For React Native Projects",
   "homepage": "https://github.com/NetcoreSolutions/Smartech-ReactNative-Module",
   "main": "index.js",
