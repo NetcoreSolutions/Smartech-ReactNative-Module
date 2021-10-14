@@ -7,7 +7,7 @@ Smartech is a omni channel platform that delivers everything you need to drive m
 ## Developer Docs
 To get started please refer to our developer docs to know how to make use of our SDK to track Events and User Attributes, How to implement Push Notification and How to show In-App Messages.
 
-[Developer Docs](https://docs.netcoresmartech.com/docs/react-native-sdk-v3-integration)
+[Developer Docs](https://docs.netcoresmartech.com/docs/react-native-sdk-integration)
 
 ## Support
 Please visit this repository's [Github issue tracker](https://github.com/NetcoreSolutions/Smartech-ReactNative-Module/issues) for any bug reports specific to our React Native SDK.
