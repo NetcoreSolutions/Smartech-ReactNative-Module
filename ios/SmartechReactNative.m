@@ -80,9 +80,16 @@ RCT_EXPORT_METHOD(logoutAndClearUserIdentity:(BOOL)clearUserIdentity) {
  
  @discussion This method should be called only when the user gets the identity.
  */
-RCT_EXPORT_METHOD(setUserIdentity:(NSString *)userIdentity) {
+RCT_EXPORT_METHOD(setUserIdentity:(NSString *)userIdentity callback:(RCTResponseSenderBlock)callback)
+{
     RCTLogInfo(@"[Smartech setUserIdentity]");
     [[Smartech sharedInstance] setUserIdentity:userIdentity];
+    if([userIdentity isEqualToString:@""] || (userIdentity == nil)){
+        [self returnResult:@"Expected one non-empty string argument." withCallback:callback andError:nil];
+    }else{
+        [[Smartech sharedInstance] setUserIdentity:userIdentity];
+        [self returnResult:@"Identity is set successfully." withCallback:callback andError:nil];
+    }
 }
 
 /**
@@ -90,7 +97,7 @@ RCT_EXPORT_METHOD(setUserIdentity:(NSString *)userIdentity) {
  
  @discussion This method should be called to get the user's identity.
  */
-RCT_EXPORT_METHOD(getUserIdentity) {
+RCT_EXPORT_METHOD(getUserIdentity:(RCTResponseSenderBlock)callback) {
     RCTLogInfo(@"[Smartech getUserIdentity]");
     
 }

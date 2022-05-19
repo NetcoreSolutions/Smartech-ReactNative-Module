@@ -9,7 +9,6 @@ def safeExtGet(prop, fallback) {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
 
 buildscript {
     // The Android Gradle plugin is only required when opening the android folder stand-alone.
@@ -28,7 +27,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 28
@@ -45,10 +44,13 @@ android {
 }
 
 repositories {
+    google()
+    jcenter()
+
     // ref: https://www.baeldung.com/maven-local-repository
     mavenLocal()
 
-    maven { url 'http://artifacts.hansel.io/artifactory/android' }
+    maven { url 'https://artifacts.hansel.io/artifactory/android' }
     
     maven {
         // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
@@ -58,18 +60,12 @@ repositories {
         // Android JSC is installed from npm
         url "$rootDir/../node_modules/jsc-android/dist"
     }
-
-
-
-    google()
-    jcenter()
-
 }
 
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
-    api 'com.netcore.android:smartech-sdk:3.1.7'
+    api 'com.netcore.android:smartech-sdk:3.1.29'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61'
     implementation "androidx.work:work-runtime-ktx:2.3.3"
 }
@@ -135,14 +131,5 @@ afterEvaluate { project ->
     artifacts {
         archives androidSourcesJar
         archives androidJavadocJar
-    }
-
-    task installArchives(type: Upload) {
-        configuration = configurations.archives
-        repositories.mavenDeployer {
-            // Deploy to react-native-event-bridge/maven, ready to publish to npm
-            repository url: "file://${projectDir}/../android/maven"
-            configureReactNativePom pom
-        }
     }
 }

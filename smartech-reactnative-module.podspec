@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency "Smartech-iOS-SDK"
+  s.dependency "Smartech-iOS-SDK", '3.1.11'
 end
 
