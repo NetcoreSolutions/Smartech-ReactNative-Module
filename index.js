@@ -2,6 +2,7 @@ import { DeviceEventEmitter, NativeEventEmitter, NativeModules } from 'react-nat
 
 const SmartechReactBridge = NativeModules.SmartechReactNative;
 const SmartechEventEmitter = NativeModules.SmartechReactEventEmitter ? new NativeEventEmitter(NativeModules.SmartechReactEventEmitter) : DeviceEventEmitter;
+let eventEmitter;
 
 function defaultCallback(method, err, res) {
     if (err) {
@@ -45,6 +46,14 @@ var SmartechReact = {
         }
     },
 
+    // This method is used to register listener.
+    addDeepLinkListener: function (eventName, handler, callback) {
+        if (SmartechEventEmitter) {
+          const eventEmitter = SmartechEventEmitter.addListener(eventName, handler);
+          callback(eventEmitter)
+        }
+    },
+    
     /**
      *  This method will be used to handle the deeplink
      *  used to open the app.
@@ -247,6 +256,10 @@ var SmartechReact = {
     fetchAlreadyGeneratedTokenFromFCM: function () {
         SmartechReactBridge.fetchAlreadyGeneratedTokenFromFCM();
     },
+
+    registerForPushNotificationWithAuthorizationOptions: function (enableAlert, enableBadge, enableSound) {
+        SmartechReactBridge.registerForPushNotificationWithAuthorizationOptions(enableAlert, enableBadge, enableSound);
+    }
 
 };
 

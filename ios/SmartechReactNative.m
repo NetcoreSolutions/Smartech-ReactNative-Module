@@ -184,6 +184,23 @@ RCT_EXPORT_METHOD(hasOptedInAppMessage) {
     [[Smartech sharedInstance] hasOptedInAppMessage];
 }
 
+RCT_EXPORT_METHOD(registerForPushNotificationWithAuthorizationOptions:(BOOL)alert withBadge:(BOOL)badge andSound:(BOOL)sound) {
+    if (@available(iOS 10.0, *)) {
+        UNAuthorizationOptions options = UNAuthorizationOptionNone;
+        if (alert) {
+            options += UNAuthorizationOptionAlert;
+        }
+        if (badge) {
+            options += UNAuthorizationOptionBadge;
+        }
+        if (sound) {
+            options += UNAuthorizationOptionSound;
+        }
+        [[Smartech sharedInstance] registerForPushNotificationWithAuthorizationOptions:options];
+    } else {
+        // Fallback on earlier versions
+    }
+}
 
 #pragma mark - Location Methods
 

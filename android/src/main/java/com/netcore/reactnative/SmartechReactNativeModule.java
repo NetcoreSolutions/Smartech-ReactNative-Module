@@ -403,6 +403,10 @@ public class SmartechReactNativeModule extends ReactContextBaseJavaModule implem
         }
     }
 
+    // This is empty method used in iOS only..
+    @ReactMethod
+    public void registerForPushNotificationWithAuthorizationOptions(boolean alert, boolean badge, boolean sound) {}
+
     // Used to handle callback.
     private void callbackHandler(Callback callback, Object response) {
         if (callback == null) {
